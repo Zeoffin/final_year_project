@@ -1,6 +1,7 @@
 """
 This is code for processing video stream from phone by using 'IP Webcam' app
 """
+from PIL import ImageGrab
 from ppadb.client import Client as AdbClient
 
 import time
@@ -30,10 +31,10 @@ img1 = cv.imread("Images/desktop.png", cv.IMREAD_GRAYSCALE)
 cv.namedWindow("stream", cv.WINDOW_NORMAL)
 cv.resizeWindow("stream", WINDOW_WIDTH, WINDOW_HEIGHT)
 
-# For threading
+# List for thread For threading management
 image_processing_threads = []
 
-# Parameters for when drawing detection rectangle
+# Parameters for drawing the matched region
 top_left = None
 bot_right = None
 color = (255, 0, 0)
@@ -42,6 +43,7 @@ thickness = 2
 # Find the keypoints for the desktop image
 kp1, des1 = sift.detectAndCompute(img1, None)
 
+# Connect to the device
 adblib_test.adbclient_setup()
 input_xy = (0, 0)
 
@@ -78,6 +80,7 @@ def get_device_xy():
         print(f'Failed while getting input coordinates: {e}')
 
 
+# Threaded function that feature-matches frames from screen and device capture
 def process_last_frame(last_frame):
 
     last_frame = cv.cvtColor(last_frame, cv.COLOR_BGR2GRAY)     # Read in the last frame
