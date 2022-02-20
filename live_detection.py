@@ -40,6 +40,7 @@ bot_right = None
 color = (255, 0, 0)
 thickness = 2
 
+# TODO: REMOVE WHEN DETECTING SCREEN
 # Find the keypoints for the desktop image
 kp1, des1 = sift.detectAndCompute(img1, None)
 
