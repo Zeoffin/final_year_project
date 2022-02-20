@@ -17,7 +17,7 @@ while True:
     img_arr = np.array(bytearray(img_resp.content), dtype=np.uint8)
     img = cv2.imdecode(img_arr, -1)
 
-    cv2.rectangle(img, (2, 2), (300, 600), (255, 0, 0), 2)  # Draws a rectangle
+    #cv2.rectangle(img, (2, 2), (300, 600), (255, 0, 0), 2)  # Draws a rectangle
 
     cv2.imshow("stream", img)
 

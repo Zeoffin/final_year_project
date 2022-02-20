@@ -31,7 +31,7 @@ def get_device_xy():
         print(f'Failed while getting input coordinates: {e}')
 
 
-if __name__ == '__main__':
+def adbclient_setup():
     client = AdbClient(host="127.0.0.1", port=5037)  # Default is "127.0.0.1" and 5037
 
     # This section is to connect to the device wireless
@@ -52,4 +52,6 @@ if __name__ == '__main__':
     shell_cmd = 'wm size'
     print(f'The resolution of this screen is: {device.shell(shell_cmd)}')
 
-    get_device_xy()     # Coordinate limit is: w:4080 and h:4095
+    #get_device_xy()     # Coordinate limit is: w:4080 and h:4095
+
+adbclient_setup()
