@@ -40,13 +40,12 @@ bot_right = None
 color = (255, 0, 0)
 thickness = 2
 
-# TODO: REMOVE WHEN DETECTING SCREEN
 # Find the keypoints for the desktop image
 kp1, des1 = sift.detectAndCompute(img1, None)
 
 # Connect to the device
-adblib_test.adbclient_setup()
-input_xy = (0, 0)
+# adblib_test.adbclient_setup()
+# input_xy = (0, 0)
 
 
 # Gets the x/y touch coordinates from the connected device
@@ -120,8 +119,8 @@ def process_last_frame(last_frame):
 
 
 # Create a thread for listening to the input from the device
-input_thread = threading.Thread(target=get_device_xy)
-input_thread.start()
+# input_thread = threading.Thread(target=get_device_xy)
+# input_thread.start()
 
 # Main loop
 while True:
@@ -147,7 +146,7 @@ while True:
             image_processing_threads = []
 
     cv.imshow('stream', current_frame)  # Show the screen
-    print(input_xy)
+    # print(input_xy)
     if cv.waitKey(1) == 27:    # ESC to exit
         break
 
